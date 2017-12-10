@@ -1,0 +1,8 @@
+source [find interface/stlink-v2.cfg]
+source [find target/STM32L4x.cfg]
+init
+reset init
+halt
+flash write_image erase build/test.bin ${FLASH_START}
+verify_image build/test.bin ${FLASH_START}
+shutdown
